@@ -53,3 +53,11 @@ client.once('clientReady', () => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+// Create a dummy web server so Render allows it on the Free Web Service tier
+const http = require('http');
+const server = http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('Bot is online!');
+});
+server.listen(process.env.PORT || 3000, () => console.log('Dummy web server started.'));
